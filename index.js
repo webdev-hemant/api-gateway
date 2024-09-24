@@ -8,13 +8,13 @@ const combinedRoutes = require("./routes/custom/combined");
 const app = express();
 const PORT = GATEWAY_SERVER_PORT;
 
-app.use(express.json());
-
 // Register routes
 app.use("/auth", authRoutes);
 app.use("/chat", chatRoutes);
 app.use("/publicPost", publicPostRoutes);
 app.use("/combined", combinedRoutes);
+
+app.use(express.json());
 
 app.listen(PORT, () => {
   console.log(`API Gateway is running on http://localhost:${PORT}`);
