@@ -1,0 +1,14 @@
+require("dotenv").config();
+
+const GATEWAY_SERVER_PORT = process.env.GATEWAY_SERVER_PORT;
+
+const AUTH_SERVICE_URL = process.env.AUTH_SERVICE_URL;
+const PUBLIC_SERVICE_URL = process.env.PUBLIC_SERVICE_URL;
+const CHAT_SERVICE_URL = process.env.CHAT_SERVICE_URL;
+
+module.exports = {
+  GATEWAY_SERVER_PORT,
+  AUTH_SERVICE_URL,
+  PUBLIC_SERVICE_URL,
+  CHAT_SERVICE_URL,
+};
