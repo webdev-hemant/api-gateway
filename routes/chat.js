@@ -1,16 +1,18 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const { CHAT_SERVICE_URL } = require("../config/allEnv");
+const { extractOriginAndRoute } = require("../utils");
 
 const router = express.Router();
-const chatServiceUrl = CHAT_SERVICE_URL;
+const { origin } = extractOriginAndRoute(CHAT_SERVICE_URL);
 
 router.use(
   "/",
   createProxyMiddleware({
-    target: chatServiceUrl,
+    target: origin,
     changeOrigin: true,
     logger: console,
+    ws: true,
   })
 );
 

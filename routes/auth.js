@@ -1,14 +1,15 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const { AUTH_SERVICE_URL } = require("../config/allEnv");
+const { extractOriginAndRoute } = require("../utils");
 
 const router = express.Router();
-const authServiceUrl = AUTH_SERVICE_URL;
+const { origin } = extractOriginAndRoute(AUTH_SERVICE_URL);
 
 router.use(
   "/",
   createProxyMiddleware({
-    target: authServiceUrl,
+    target: origin,
     changeOrigin: true,
     logger: console,
   })
