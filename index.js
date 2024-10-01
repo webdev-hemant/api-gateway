@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const chatRoutes = require("./routes/chat");
 const publicPostRoutes = require("./routes/publicPost");
@@ -13,6 +14,8 @@ const {
 
 const app = express();
 const PORT = GATEWAY_SERVER_PORT;
+
+app.use(cors({ origin: "*" }));
 
 const { route: authRouteName } = extractOriginAndRoute(AUTH_SERVICE_URL);
 const { route: chatRouteName } = extractOriginAndRoute(CHAT_SERVICE_URL);
